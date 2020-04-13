@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="an estimator for the impact of corona virus over time">
+    <link rel="stylesheet" href="./src/styles.css">
+    <title>COVID19 ESTIMATOR</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+         <h1>COVID19 Estimator</h1>
+           <p>This is an impact estimator that uses the values entered in the form below to estimate the impact of COVID19 over a period of time</p>
+       </div>
+       
+      <form action="#" method="get" >
+       <div>
+           <label for="Population">Population
+           <input type="text" id="Population" name="Population" data-population >
+        </label>
+       </div>
+       <div>
+           <label for="cases">Reported Cases
+           <input type="text" id="cases" name='reportedCases' data-reported-cases>
+        </label>
+       </div>
+       <div>
+           <label for="beds">Total Hospital Beds
+           <input type="text" id="beds" name="totalHospitalBeds" data-total-hospital-beds>
+        </label>
+       </div>
+       <div>
+        <label for="time">Time To Elapse
+        <input type="text" id="time" name="timeToElapse" data-time-to-elapse>
+    </label>
+    </div>
+       <div>
+           <label for="periodType">Period Type
+           <select name="periodType" id="periodType" data-period-type>
+               <option>days</option>
+               <option>weeks</option>
+               <option>months</option>
+           </select>
+        </label>
+       </div>
+       <div>
+       <button type="submit" data-go-estimate>Submit</button>
+    </div>
+   </form>
+    </div>
+    
+</body>
+</html>

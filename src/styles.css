@@ -1,0 +1,84 @@
+:root{
+    background-color: burlywood;
+    font-size: 62.5%;
+}
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    color: #333333;
+}
+h1{
+    text-align: center;
+    color: rgb(48, 29, 5);
+}
+p{
+    font-size: 1.4rem;
+    padding: 20px;
+}
+.container{
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    border:1px solid gray;
+    margin: auto;
+    padding: 2rem;
+    background-color: cornsilk;
+    display: grid;
+    place-items: center;
+}
+input, select{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: 1px solid #C2C2C2;
+	box-shadow: 1px 1px 4px #EBEBEB;
+	-moz-box-shadow: 1px 1px 4px #EBEBEB;
+	-webkit-box-shadow: 1px 1px 4px #EBEBEB;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 7px;
+    outline: none;
+    padding: 12px 20px;
+    margin: 8px 0;
+    float: right;
+}
+input:hover, select:hover{
+	background: rgb(248, 218, 184);
+	color: #fff;
+}
+form{
+	max-width: 450px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+label{
+    margin-bottom: 0px;
+    width: 100%;
+    padding:0px;
+    font-size: 1.5rem;
+    display: block;
+    float: left;
+}
+label > span{
+	float: left;
+	width: 100px;
+	color: #F072A9;
+	font-weight: bold;
+	font-size: 13px;
+	text-shadow: 1px 1px 1px #fff;
+}
+button{
+	border: none;
+	padding: 8px 15px 8px 15px;
+	background: rgb(100, 56, 9);
+	color: #fff;
+	box-shadow: 1px 1px 4px #DADADA;
+	-moz-box-shadow: 1px 1px 4px #DADADA;
+	-webkit-box-shadow: 1px 1px 4px #DADADA;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
