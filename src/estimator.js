@@ -11,15 +11,23 @@ const factor = (data) => {
   }
   return getFactor;
 };
+const availableBeds = (data) => Math.trunc(0.35 * data.totalHospitalBeds);
+
 const covid19ImpactEstimator = (data) => ({
   data,
   impact: {
     currentlyInfected: data.reportedCases * 10,
-    infectionsByRequestedTime: (data.reportedCases * 10) * (2 ** factor(data))
+    infectionsByRequestedTime: (data.reportedCases * 10) * (2 ** factor(data)),
+    severeCasesByRequestedTime: Math.trunc(0.15 * (data.reportedCases * 10) * (2 ** factor(data))),
+    hospitalBedsByRequestedTime:
+    availableBeds(data) - (Math.trunc(0.15 * (data.reportedCases * 10) * (2 ** factor(data))))
   },
   severeImpact: {
     currentlyInfected: data.reportedCases * 50,
-    infectionsByRequestedTime: (data.reportedCases * 50) * (2 ** factor(data))
+    infectionsByRequestedTime: (data.reportedCases * 50) * (2 ** factor(data)),
+    severeCasesByRequestedTime: Math.trunc(0.15 * (data.reportedCases * 50) * (2 ** factor(data))),
+    hospitalBedsByRequestedTime:
+    availableBeds(data) - (Math.trunc(0.15 * (data.reportedCases * 50) * (2 ** factor(data))))
   }
 });
 export default covid19ImpactEstimator;
