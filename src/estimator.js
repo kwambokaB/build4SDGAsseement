@@ -11,23 +11,74 @@ const factor = (data) => {
   }
   return getFactor;
 };
+const impactCurrentlyInfected = (data) => data.reportedCases * 10;
+const severCurrentlyInfected = (data) => data.reportedCases * 50;
+const avgDailyIncome = (data) => data.region.avgDailyIncomeInUSD;
+const avgDailyPopulation = (data) => data.region.avgDailyIncomePopulation;
 const availableBeds = (data) => 0.35 * data.totalHospitalBeds;
+
+const ImpactEconomyLoss = (data) => {
+  const duration = data.timeToElapse;
+  let estimatedLoss;
+
+  if (data.periodType.trim().toLowerCase() === 'days') {
+    estimatedLoss = (impactCurrentlyInfected(data) * (2 ** factor(data))
+     * avgDailyIncome(data) * avgDailyPopulation(data))
+     / duration;
+  } else if (data.periodType.trim().toLowerCase() === 'weeks') {
+    estimatedLoss = (impactCurrentlyInfected(data) * (2 ** factor(data))
+    * avgDailyIncome(data) * avgDailyPopulation(data))
+    / (duration * 7);
+  } else if (data.periodType.trim().toLowerCase() === 'weeks') {
+    estimatedLoss = (impactCurrentlyInfected(data) * (2 ** factor(data))
+    * avgDailyIncome(data) * avgDailyPopulation(data))
+    / (duration * 30);
+  }
+  return estimatedLoss;
+};
+const severImpactEconomyLoss = (data) => {
+  const duration = data.timeToElapse;
+  let estimatedLoss;
+
+  if (data.periodType.trim().toLowerCase() === 'days') {
+    estimatedLoss = (severCurrentlyInfected(data) * (2 ** factor(data))
+     * avgDailyIncome(data) * avgDailyPopulation(data))
+     / duration;
+  } else if (data.periodType.trim().toLowerCase() === 'weeks') {
+    estimatedLoss = (severCurrentlyInfected(data) * (2 ** factor(data))
+    * avgDailyIncome(data) * avgDailyPopulation(data))
+    / (duration * 7);
+  } else if (data.periodType.trim().toLowerCase() === 'weeks') {
+    estimatedLoss = (severCurrentlyInfected(data) * (2 ** factor(data))
+    * avgDailyIncome(data) * avgDailyPopulation(data))
+    / (duration * 30);
+  }
+  return estimatedLoss;
+};
 
 const covid19ImpactEstimator = (data) => ({
   data,
   impact: {
-    currentlyInfected: data.reportedCases * 10,
-    infectionsByRequestedTime: (data.reportedCases * 10) * (2 ** factor(data)),
-    severeCasesByRequestedTime: Math.trunc(0.15 * (data.reportedCases * 10) * (2 ** factor(data))),
+    currentlyInfected: impactCurrentlyInfected(data),
+    infectionsByRequestedTime: impactCurrentlyInfected(data) * (2 ** factor(data)),
+    severeCasesByRequestedTime:
+     Math.trunc(0.15 * impactCurrentlyInfected(data) * (2 ** factor(data))),
     hospitalBedsByRequestedTime:
-    Math.trunc(availableBeds(data) - (0.15 * (data.reportedCases * 10) * (2 ** factor(data))))
+    Math.trunc(availableBeds(data) - (0.15 * impactCurrentlyInfected(data) * (2 ** factor(data)))),
+    casesForICUByRequestedTime: 0.05 * (data.reportedCases * 10) * (2 ** factor(data)),
+    casesForVentilatorsByRequestedTime: 0.02 * impactCurrentlyInfected(data) * (2 ** factor(data)),
+    dollarsInFlight: ImpactEconomyLoss(data)
   },
   severeImpact: {
-    currentlyInfected: data.reportedCases * 50,
-    infectionsByRequestedTime: (data.reportedCases * 50) * (2 ** factor(data)),
-    severeCasesByRequestedTime: Math.trunc(0.15 * (data.reportedCases * 50) * (2 ** factor(data))),
+    currentlyInfected: severCurrentlyInfected(data),
+    infectionsByRequestedTime: severCurrentlyInfected(data) * (2 ** factor(data)),
+    severeCasesByRequestedTime:
+    Math.trunc(0.15 * severCurrentlyInfected(data) * (2 ** factor(data))),
     hospitalBedsByRequestedTime:
-    Math.trunc(availableBeds(data) - (0.15 * (data.reportedCases * 50) * (2 ** factor(data))))
+    Math.trunc(availableBeds(data) - (0.15 * severCurrentlyInfected(data) * (2 ** factor(data)))),
+    casesForICUByRequestedTime: 0.05 * severCurrentlyInfected(data) * (2 ** factor(data)),
+    casesForVentilatorsByRequestedTime: 0.02 * severCurrentlyInfected(data) * (2 ** factor(data)),
+    dollarsInFlight: severImpactEconomyLoss(data)
   }
 });
 export default covid19ImpactEstimator;
