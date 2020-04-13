@@ -11,7 +11,7 @@
 }
 h1{
     text-align: center;
-    color: darkorange;
+    color: rgb(48, 29, 5);
 }
 p{
     font-size: 1.4rem;
@@ -73,7 +73,7 @@ label > span{
 button{
 	border: none;
 	padding: 8px 15px 8px 15px;
-	background: #FF8500;
+	background: rgb(100, 56, 9);
 	color: #fff;
 	box-shadow: 1px 1px 4px #DADADA;
 	-moz-box-shadow: 1px 1px 4px #DADADA;
