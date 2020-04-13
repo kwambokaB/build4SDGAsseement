@@ -87,4 +87,4 @@ const covid19ImpactEstimator = (data) => ({
     dollarsInFlight: Math.trunc(severImpactEconomyLoss(data))
   }
 });
-export default covid19ImpactEstimator;
+module.exports = covid19ImpactEstimator;
