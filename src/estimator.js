@@ -29,7 +29,7 @@ const ImpactEconomyLoss = (data) => {
     estimatedLoss = (impactCurrentlyInfected(data) * (2 ** factor(data))
     * avgDailyIncome(data) * avgDailyPopulation(data))
     / (duration * 7);
-  } else if (data.periodType.trim().toLowerCase() === 'weeks') {
+  } else if (data.periodType.trim().toLowerCase() === 'months') {
     estimatedLoss = (impactCurrentlyInfected(data) * (2 ** factor(data))
     * avgDailyIncome(data) * avgDailyPopulation(data))
     / (duration * 30);
@@ -48,7 +48,7 @@ const severImpactEconomyLoss = (data) => {
     estimatedLoss = (severCurrentlyInfected(data) * (2 ** factor(data))
     * avgDailyIncome(data) * avgDailyPopulation(data))
     / (duration * 7);
-  } else if (data.periodType.trim().toLowerCase() === 'weeks') {
+  } else if (data.periodType.trim().toLowerCase() === 'months') {
     estimatedLoss = (severCurrentlyInfected(data) * (2 ** factor(data))
     * avgDailyIncome(data) * avgDailyPopulation(data))
     / (duration * 30);
