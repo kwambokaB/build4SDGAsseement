@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>COVID19 ESTIMATOR</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="header">
+         <h1>COVID19 Estimator</h1>
+           <p>gdghdkjdlfg fdkjogjdflgd mdghdkgjldkg;df mdkgfjgfdi gldfglglkfd; gdflgjdfkgd</p>
+       </div>
+      <form action="#" method="get" >
+       <div>
+           <label for="Population">Population
+           <input type="text" id="Population" name="Population" data-population >
+        </label>
+       </div>
+       <div>
+           <label for="cases">Reported Cases
+           <input type="text" id="cases" name='reportedCases' data-reported-cases>
+        </label>
+       </div>
+       <div>
+           <label for="beds">Total Hospital Beds
+           <input type="text" id="beds" name="totalHospitalBeds" data-total-hospital-beds>
+        </label>
+       </div>
+       <div>
+        <label for="time">Time To Elapse
+        <input type="text" id="time" name="timeToElapse" data-time-to-elapse>
+    </label>
+    </div>
+       <div>
+           <label for="period">Period Type
+           <select name="" id="" data-period-type>
+               <option value="1">Days</option>
+               <option value="2">Weeks</option>
+               <option value="3">Months</option>
+           </select>
+        </label>
+       </div>
+       <div>
+       <button type="submit" onClick="covid19ImpactEstimator(this.form)">Submit</button>
+    </div>
+   </form>
+    </div>
+    <script src="./estimator.js"></script>
+</body>
+</html>
