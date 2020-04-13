@@ -27,7 +27,7 @@ const covid19ImpactEstimator = (data) => ({
     infectionsByRequestedTime: (data.reportedCases * 50) * (2 ** factor(data)),
     severeCasesByRequestedTime: Math.trunc(0.15 * (data.reportedCases * 50) * (2 ** factor(data))),
     hospitalBedsByRequestedTime:
-    Math.trunc(availableBeds(data)) - (0.15 * (data.reportedCases * 50) * (2 ** factor(data)))
+    Math.trunc(availableBeds(data) - (0.15 * (data.reportedCases * 50) * (2 ** factor(data))))
   }
 });
 export default covid19ImpactEstimator;
