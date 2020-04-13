@@ -9,6 +9,14 @@
     margin: 0;
     color: #333333;
 }
+h1{
+    text-align: center;
+    color: darkorange;
+}
+p{
+    font-size: 1.4rem;
+    padding: 20px;
+}
 .container{
     width: 100vh;
     height: 100vh;
