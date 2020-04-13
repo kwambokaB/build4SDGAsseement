@@ -48,7 +48,7 @@ const severImpactEconomyLoss = (data) => {
     estimatedLoss = (severCurrentlyInfected(data) * (2 ** factor(data))
     * avgDailyIncome(data) * avgDailyPopulation(data))
     / (duration * 7);
-  } else if (data.periodType.trim().toLowerCase() === 'months') {
+  } else if (data.periodType.trim().toLowerCase() === 'weeks') {
     estimatedLoss = (severCurrentlyInfected(data) * (2 ** factor(data))
     * avgDailyIncome(data) * avgDailyPopulation(data))
     / (duration * 30);
